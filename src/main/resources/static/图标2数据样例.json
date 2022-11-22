@@ -1,0 +1,50 @@
+{
+  "array": [
+    {
+      "budgetPeriod": "2022年/11月",
+      "costcenter": "西北地区",
+      "budgetContent": [
+        {
+          "title": "月度计划-不同活动类型额度占比（包含当前待审批的月度计划）",
+          "value": 100,
+          "children": {
+            "list": [
+              {
+                "title": "活动类型1",
+                "value": 40
+              },
+              {
+                "title": "活动类型2",
+                "value": 40
+              },
+              {
+                "title": "活动类型3",
+                "value": 20
+              }
+            ]
+          }
+        },
+        {
+          "title": "月度计划-不同活动类型额度占比（不包含当前待审批的月度计划）",
+          "value": 100,
+          "children": {
+            "list": [
+              {
+                "title": "活动类型1",
+                "value": 40
+              },
+              {
+                "title": "活动类型2",
+                "value": 40
+              },
+              {
+                "title": "活动类型3",
+                "value": 20
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

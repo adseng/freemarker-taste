@@ -1,0 +1,81 @@
+{
+  "array": [
+    {
+      "budgetPeriod": "2022年/11月",
+      "costcenter": "西北地区",
+      "budgetContent": [
+        {
+          "title": "预算总额（按年度累计至今）",
+          "value": 12000,
+          "children": {
+            "group": "冻结",
+            "list": [
+              {
+                "title": "库存",
+                "value": 1000
+              },
+              {
+                "title": "二次议价",
+                "value": 1000
+              },
+              {
+                "title": "讲课税费",
+                "value": 1000
+              },
+              {
+                "title": "视同销售税金",
+                "value": 1000
+              },
+              {
+                "title": "其他",
+                "value": 1000
+              },
+              {
+                "title": "未分配",
+                "value": 1000
+              },
+              {
+                "title": "可使用预算",
+                "value": 6000,
+                "children": {
+                  "group": "可使用预算",
+                  "list": [
+                    {
+                      "title": "占用",
+                      "value": 1000
+                    },
+                    {
+                      "title": "待审单据",
+                      "value": 2000
+                    },
+                    {
+                      "title": "剩余",
+                      "value": 3000
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "budgetUser": [
+        {
+          "name": "张三",
+          "used": 200,
+          "percentage": "8%"
+        },
+        {
+          "name": "李四",
+          "used": 300,
+          "percentage": "13%"
+        },
+        {
+          "name": "下属成本中心累计",
+          "used": 800,
+          "percentage": "33%"
+        }
+      ]
+    }
+  ]
+}
