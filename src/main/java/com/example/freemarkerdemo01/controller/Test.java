@@ -41,7 +41,7 @@ public class Test {
         StringWriter stringWriter = new StringWriter();
         template.process(map1, stringWriter);
         String resultStr = stringWriter.toString();
-        System.out.println(resultStr);
+//        System.out.println(resultStr);
 
         return resultStr;
     }
@@ -139,7 +139,7 @@ public class Test {
         map1.put("array", l1);
         template.process(map1, stringWriter);
         String resultStr = stringWriter.toString();
-        System.out.println(resultStr);
+//        System.out.println(resultStr);
 
         return resultStr;
     }
