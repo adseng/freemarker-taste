@@ -47,9 +47,12 @@
             border-collapse: collapse;
         }
 
+        tr {
+            height: 40px;
+        }
+
         th,
         td {
-            height: 40px;
             border: 1px solid #525252;
             text-align: center;
         }
@@ -104,6 +107,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+
+        .h-20px {
+            height: 20px;
         }
 
         .h-40px {
@@ -221,7 +228,7 @@
                                         <td>${(item.value)!""}</td>
                                     </tr>
                                     <#list item.children.list as a>
-                                        <tr class="color-b3 data-x-budget-mobile"
+                                        <tr class="color-b3 data-x-budget-mobile h-20px"
                                             data-x-budget-sum-mobile="${(item.value)!0}"
                                             data-x-budget-mobile="${(a.value)!0}">
                                             <td>${(a.title)!""}</td>
