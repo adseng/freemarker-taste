@@ -102,22 +102,33 @@
 <script>
     const option = {
         title: {
-            text: "月度计划-不同活动类型额度占比（包含当前待审批的月度计划）",
+            text: "月度计划-不同活动类型额度占比\n（包含当前待审批的月度计划）",
             // subtext: "（包含当前待审批的月度计划）",
             left: "center",
+            top: 20,
+            textStyle: {
+                fontSize: 15
+            }
         },
+        color: ['#8994d3', '#715597', '#4a7ced', '#b2db9e', '#fbd88a', '#f39494', '#9dd3e8', '#1cbbb4', '#f37b1d', '#39b54a', '#fbbd08',
+            '#8dc63f', '#2C3E50', '#6495ed', '#b0c4de', '#b0929f', '#9D2933', '#D24D57', '#EAF2D3', '#e54d42'],
         tooltip: {
+            show: true,
             trigger: "item",
+            formatter: '{b}'
         },
         series: [
             {
-                name: "Access From",
+                name: "",
                 type: "pie",
                 radius: "50%",
                 data: [
-                    {value: 40, name: "活动类型1 40%"},
-                    {value: 40, name: "活动类型2 40%"},
-                    {value: 20, name: "活动类型3 20%"},
+                    // {value: 40, name: "活动类型1 40%", id: '1'},
+                    // {value: 40, name: "活动类型2 40%", id: '2'},
+                    // {value: 5, name: "活动类型3 20%", id: '3'},
+                    // {value: 5, name: "活动类型32 20%", id: '3'},
+                    // {value: 5, name: "活动类型33 20%", id: '3'},
+                    // {value: 5, name: "活动类型34 20%", id: '3'},
                 ],
                 emphasis: {
                     itemStyle: {
@@ -137,19 +148,44 @@
             const str = node.getAttribute('data-x-pie');
             const data = JSON.parse(str)
             option.title.text = data?.title;
-            option.series[0].data = data?.children.list.map((v) => {
+            option.series[0].data = data?.children.list.sort((a, b) => b - a).map((v) => {
                 return {value: v.value, name: v.title};
             });
+            if (window.innerWidth < 520) {
+                option.title.textStyle.fontSize = 12
+            } else {
+                option.title.textStyle.fontSize = 15
+            }
             const pie = echarts.init(node)
             pie.setOption(option)
             pies.push(pie)
         }
     }
-    window.onresize= () => {
-        for (let pie of pies) {
-            pie.resize()
+
+    const debounce = (fn, delay) => {
+        let timer
+        return function () {
+            if (timer) {
+                clearTimeout(timer);
+            }
+            timer = setTimeout(() => {
+                fn()
+            }, delay)
         }
     }
+
+    window.onresize = debounce(() => {
+        for (let pie of pies) {
+            let option = pie.getOption()
+            if (window.innerWidth < 520) {
+                option.title[0].textStyle.fontSize = 12
+            } else {
+                option.title[0].textStyle.fontSize = 15
+            }
+            pie.setOption(option)
+            pie.resize()
+        }
+    }, 500)
 
 </script>
 </body>

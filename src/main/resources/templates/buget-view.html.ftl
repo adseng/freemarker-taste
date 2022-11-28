@@ -85,12 +85,24 @@
             }
 
             .wrapper__title {
-                font-size: 15px;
+                font-size: 17px;
             }
 
             .wrapper__title--1 {
                 padding: 3px;
-                font-size: 6px;
+                font-size: 12px;
+            }
+
+            .wrapper__table-title {
+                font-size: 12px;
+            }
+
+            .table-f-12 {
+                font-size: 12px;
+            }
+
+            .table-f-15 {
+                font-size: 15px;
             }
 
         }
@@ -107,10 +119,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-        }
-
-        .h-20px {
-            height: 20px;
+            white-space: pre-wrap;
+            text-align: center;
         }
 
         .h-40px {
@@ -127,15 +137,15 @@
 
 
         .color-b1 {
-            background-color: #325695;
+            background-color: #1D5CC1;
         }
 
         .color-b2 {
-            background-color: #3676b3;
+            background-color: #3580D7;
         }
 
         .color-b3 {
-            background-color: #91abda;
+            background-color: #49A0EB;
         }
 
         .w-50p {
@@ -144,6 +154,14 @@
 
         .w-100p {
             width: 100%;
+        }
+
+        .border-b-1 {
+            border-bottom: 1px rgba(255, 255, 255, 0.5) solid;
+        }
+
+        .border-r-1 {
+            border-right: 1px rgba(255, 255, 255, 0.5) solid;
         }
     </style>
 </head>
@@ -163,15 +181,15 @@
 <div class="wrapper__body">
     <div class="wrapper__body--box">
         <#if budgetContent?? && (budgetContent?size > 0)>
-            <p style="padding: 10px">按年度累计至今预算进度情况</p>
+            <p style="padding: 10px" class="wrapper__table-title">按年度累计至今预算进度情况</p>
             <#list budgetContent as budgetContentItem>
                 <div class="wrapper__table--1">
                     <!-- hzh-tb1 可嵌套的-->
                     <div class="hzh-tb1__box ftc-0">
-                        <div class="hzh-tb1__sum flx-center h-40px">
+                        <div class="hzh-tb1__sum flx-center h-40px border-b-1 color-b1">
                             <p>${(budgetContentItem.title)!""} ${(budgetContentItem.value)!""}</p>
                         </div>
-                        <div class="hzh-tb1__chd-box h-80px" style="width: 100%">
+                        <div class="hzh-tb1__chd-box h-80px">
                             <div class="hzh-tb1__chd">
                                 <div class="hzh-tb1__box">
                                     <!-- <div class="hzh-tb1__sum flx-center h-40px"><p>冻结 xxxx</p></div> -->
@@ -182,13 +200,13 @@
                                                 <#if (item.children)?? && (item.children.list)??>
                                                     <div class="hzh-tb1__chd w-50p">
                                                         <div class="hzh-tb1__box">
-                                                            <div class="hzh-tb1__sum flx-center h-40px">
+                                                            <div class="hzh-tb1__sum flx-center h-40px border-b-1 color-b2">
                                                                 <p>${(item.title)!""} ${(item.value)!""}</p>
                                                             </div>
                                                             <div class="hzh-tb1__chd-box data-x-budget-sum"
                                                                  data-x-budget-sum='${(item.value)!0}'>
                                                                 <#list item.children.list as a>
-                                                                    <div class="hzh-tb1__chd flx-center h-40px"
+                                                                    <div class="hzh-tb1__chd flx-center h-40px border-r-1 color-b3"
                                                                          data-x-budget='${(a.value)!0}'>
                                                                         <p>${(a.title)!""} ${(a.value)!""}</p>
                                                                     </div>
@@ -197,8 +215,8 @@
                                                         </div>
                                                     </div>
                                                 <#else>
-                                                    <div class="hzh-tb1__chd flx-center h-80px">
-                                                        <p>${(item.title)!""} ${(item.value)!""}</p>
+                                                    <div class="hzh-tb1__chd flx-center h-80px border-r-1 color-b2">
+                                                        <p class="">${(item.title)!""} ${(item.value)!""}</p>
                                                     </div>
                                                 </#if>
                                             </#list>
@@ -212,7 +230,7 @@
                 </div>
 
                 <!--        仅移动端显示 -->
-                <div class="wrapper__table--3">
+                <div class="wrapper__table--3 table-f-12">
                     <table class="w-100p ftc-0">
                         <tbody>
                         <tr class="color-b1">
@@ -228,7 +246,7 @@
                                         <td>${(item.value)!""}</td>
                                     </tr>
                                     <#list item.children.list as a>
-                                        <tr class="color-b3 data-x-budget-mobile h-20px"
+                                        <tr class="color-b3 data-x-budget-mobile"
                                             data-x-budget-sum-mobile="${(item.value)!0}"
                                             data-x-budget-mobile="${(a.value)!0}">
                                             <td>${(a.title)!""}</td>
@@ -254,8 +272,8 @@
     <#assign budgetUser=data.budgetUser>
     <#if budgetUser?? && (budgetUser?size > 0)>
         <div class="wrapper__body--box">
-            <p style="padding: 10px">当前期间人员预算使用情况</p>
-            <div class="wrapper__table--2">
+            <p style="padding: 10px" class="wrapper__table-title">当前期间人员预算使用情况</p>
+            <div class="wrapper__table--2 table-f-12">
                 <table style="width: 100%">
                     <thead>
                     <tr>
@@ -276,7 +294,7 @@
                 </table>
             </div>
         </div>
-        <div style="height: 10px"></div>
+        <div style="height: 25px"></div>
     </#if>
 </div>
 </#list>
@@ -284,36 +302,6 @@
 
 
 <script>
-    const colors = [
-        "#194a7a",
-        "#476f95",
-        "#7593af",
-        "#503d5c",
-        "#624b6e",
-        "#6f597a",
-        "#8b7991",
-        // "#af92b5",
-        // "#273d44",
-        // "#6198aa",
-        // "#453ab2",
-        // "#6640a7",
-        // "#87469b",
-        // "#87cedc",
-        // "#53b5c0",
-        // "#6dc1ce",
-        // "#594b4b",
-    ];
-
-    const nodes1 = document.getElementsByClassName("hzh-tb1__sum");
-    const nodes2 = document.getElementsByClassName("hzh-tb1__chd");
-    let j = 0;
-    for (let i of [...nodes1, ...nodes2]) {
-        if (j > colors.length) {
-            j = 0;
-        }
-        i.style.backgroundColor = colors[j];
-        j++;
-    }
 
     const nodes3 = document.getElementsByClassName('data-x-budget-sum')
     if (nodes3 && nodes3.length) {

@@ -95,7 +95,7 @@ public class Test {
                 "              \"list\": [\n" +
                 "                {\n" +
                 "                  \"title\": \"占用\",\n" +
-                "                  \"value\": 6000\n" +
+                "                  \"value\": 1000\n" +
                 "                },\n" +
                 "                {\n" +
                 "                  \"title\": \"待审单据\",\n" +
