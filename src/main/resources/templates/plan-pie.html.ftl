@@ -148,7 +148,7 @@
             const str = node.getAttribute('data-x-pie');
             const data = JSON.parse(str)
             option.title.text = data?.title;
-            option.series[0].data = data?.children.list.sort((a, b) => b - a).map((v) => {
+            option.series[0].data = data?.children.list.sort((a, b) => b.value - a.value).map((v) => {
                 return {value: v.value, name: v.title};
             });
             if (window.innerWidth < 520) {
